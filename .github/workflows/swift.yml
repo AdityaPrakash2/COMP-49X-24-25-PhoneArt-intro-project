@@ -1,22 +1,27 @@
 name: Swift Tests
 
 on:
+  push:
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, develop ]
 
 jobs:
   test:
-    runs-on: macos-14 # Uses macOS Sonoma, which comes with newer Xcode
-
+    name: Run All Tests
+    runs-on: macos-latest
+    
     steps:
     - uses: actions/checkout@v3
     
-    - name: Select Xcode Version
-      run: sudo xcode-select -s /Applications/Xcode_15.1.app
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode.app
       
-    - name: Build and Test
+    - name: Build and Run All Tests
       run: |
-        xcodebuild test -project COMP-49X-24-25-PhoneArt-intro-project.xcodeproj \
-        -scheme YourSchemeName \
-        -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2' \
-        CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+        xcodebuild test \
+          -project COMP-49X-24-25-PhoneArt-intro-project.xcodeproj \
+          -scheme COMP-49X-24-25-PhoneArt-intro-project \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+          -testPlan COMP-49X-24-25-PhoneArt-intro-projectTests \
+          -testPlan COMP-49X-24-25-PhoneArt-intro-projectUITests
