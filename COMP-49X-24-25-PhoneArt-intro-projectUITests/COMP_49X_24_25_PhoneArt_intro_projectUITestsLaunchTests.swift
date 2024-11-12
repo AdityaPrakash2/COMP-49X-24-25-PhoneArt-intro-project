@@ -22,8 +22,22 @@ final class COMP_49X_24_25_PhoneArt_intro_projectUITestsLaunchTests: XCTestCase 
         let app = XCUIApplication()
         app.launch()
 
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
+        // Verify the "Discussions" title exists
+        XCTAssertTrue(app.staticTexts["Discussions"].exists)
+        
+        // Verify text field exists with correct placeholder
+        let textField = app.textFields["Share your thoughts here..."]
+        XCTAssertTrue(textField.exists)
+        
+        // Test entering text in the field
+        textField.tap()
+        textField.typeText("Test comment")
+        XCTAssertEqual(textField.value as? String, "Test comment")
+        
+        // Verify Post button exists and tap it
+        let postButton = app.buttons["Post"]
+        XCTAssertTrue(postButton.exists)
+        postButton.tap()
 
         let attachment = XCTAttachment(screenshot: app.screenshot())
         attachment.name = "Launch Screen"
