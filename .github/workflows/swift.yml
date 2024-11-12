@@ -23,3 +23,11 @@ jobs:
       run: |
         xcodebuild build-for-testing -scheme COMP-49X-24-25-PhoneArt-intro-project -destination 'platform=iOS Simulator,name=iPhone 14'
         
+    - name: Run Tests
+      run: |
+        xcodebuild test-without-building \
+          -scheme COMP-49X-24-25-PhoneArt-intro-project \
+          -destination 'platform=iOS Simulator,name=iPhone 14' \
+          -testPlan COMP-49X-24-25-PhoneArt-intro-project \
+          -only-testing:COMP-49X-24-25-PhoneArt-intro-projectTests \
+          -only-testing:COMP-49X-24-25-PhoneArt-intro-projectUITests
