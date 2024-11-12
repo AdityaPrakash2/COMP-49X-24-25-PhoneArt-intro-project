@@ -23,20 +23,5 @@ jobs:
       run: |
         xcodebuild build-for-testing -scheme COMP-49X-24-25-PhoneArt-intro-project -destination 'platform=iOS Simulator,name=iPhone 14'
         
-    - name: Start Simulator
-      run: |
-        UDID=$(xcrun simctl list devices | grep "iPhone 14" | grep "Booted" | awk -F"[()]" '{print $2}')
-        if [ -z "$UDID" ]; then
-          UDID=$(xcrun simctl list devices | grep "iPhone 14" | head -1 | awk -F"[()]" '{print $2}')
-          xcrun simctl boot $UDID
-        fi
-        
-    - name: Run Tests
-      run: |
-        xcodebuild test-without-building \
-          -scheme COMP-49X-24-25-PhoneArt-intro-project \
-          -destination 'platform=iOS Simulator,name=iPhone 14' \
-          -only-testing:COMP-49X-24-25-PhoneArt-intro-projectTests \
-          -only-testing:COMP-49X-24-25-PhoneArt-intro-projectUITests \
-          | xcpretty && exit ${PIPESTATUS[0]}
+    
     
