@@ -16,7 +16,6 @@ jobs:
     
     - name: Select Xcode
       run: sudo xcode-select -s /Applications/Xcode_16.1.app
-
       
     - name: Build and Run All Tests
       run: |
@@ -26,10 +25,5 @@ jobs:
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
           -testPlan AllTests \
           -enableCodeCoverage YES \
-          -resultBundlePath TestResults \
-          -maximum-concurrent-test-simulator-destinations 1 \
-          -maximum-parallel-testing-workers 1 \
           test COMP_49X_24_25_PhoneArt_intro_projectTests \
-          test COMP_49X_24_25_PhoneArt_intro_projectUITests \
-          | xcpretty
-
+          test COMP_49X_24_25_PhoneArt_intro_projectUITests
