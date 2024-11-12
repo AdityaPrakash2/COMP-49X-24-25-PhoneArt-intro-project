@@ -33,7 +33,3 @@ jobs:
           test COMP_49X_24_25_PhoneArt_intro_projectUITests \
           | xcpretty
 
-          -testPlan AllTests \
-          -enableCodeCoverage YES \
-          test COMP_49X_24_25_PhoneArt_intro_projectTests \
-          test COMP_49X_24_25_PhoneArt_intro_projectUITests
