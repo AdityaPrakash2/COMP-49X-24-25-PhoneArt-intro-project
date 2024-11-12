@@ -16,6 +16,7 @@ jobs:
     
     - name: Select Xcode
       run: sudo xcode-select -s /Applications/Xcode.app
+
       
     - name: Build and Run All Tests
       run: |
@@ -23,6 +24,7 @@ jobs:
           -project COMP-49X-24-25-PhoneArt-intro-project.xcodeproj \
           -scheme COMP-49X-24-25-PhoneArt-intro-project \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+
           -testPlan AllTests \
           -enableCodeCoverage YES \
           test COMP_49X_24_25_PhoneArt_intro_projectTests \
