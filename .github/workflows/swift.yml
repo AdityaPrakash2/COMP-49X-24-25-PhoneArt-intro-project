@@ -24,6 +24,14 @@ jobs:
           -project COMP-49X-24-25-PhoneArt-intro-project.xcodeproj \
           -scheme COMP-49X-24-25-PhoneArt-intro-project \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
+          -testPlan AllTests \
+          -enableCodeCoverage YES \
+          -resultBundlePath TestResults \
+          -maximum-concurrent-test-simulator-destinations 1 \
+          -maximum-parallel-testing-workers 1 \
+          test COMP_49X_24_25_PhoneArt_intro_projectTests \
+          test COMP_49X_24_25_PhoneArt_intro_projectUITests \
+          | xcpretty
 
           -testPlan AllTests \
           -enableCodeCoverage YES \
