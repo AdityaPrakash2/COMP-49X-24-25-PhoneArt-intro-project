@@ -9,20 +9,20 @@ on:
 jobs:
   test:
     name: Run Tests
-    runs-on: macos-14
+    runs-on: macos-latest
     
     steps:
     - uses: actions/checkout@v3
     
     - name: Select Xcode
-      run: sudo xcode-select -s /Applications/Xcode_15.0.app
+      run: sudo xcode-select -s /Applications/Xcode.app
       
     - name: Build and Run All Tests
       run: |
         xcodebuild test \
           -project COMP-49X-24-25-PhoneArt-intro-project.xcodeproj \
           -scheme COMP-49X-24-25-PhoneArt-intro-project \
-          -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.0' \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
           -testPlan AllTests \
           -enableCodeCoverage YES \
           test COMP_49X_24_25_PhoneArt_intro_projectTests \
