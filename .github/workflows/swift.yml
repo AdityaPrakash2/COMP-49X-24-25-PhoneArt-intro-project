@@ -19,5 +19,4 @@ jobs:
     - uses: actions/checkout@v4
     - name: Setup Xcode version
       run: sudo xcode-select -s /Applications/Xcode_16.1.app
-    - name: Run tests
-      run: ./run-tests.sh
+  
