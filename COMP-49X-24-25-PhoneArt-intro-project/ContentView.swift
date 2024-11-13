@@ -9,6 +9,7 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @StateObject private var viewModel = PostViewModel()
     @State private var newComment = ""
     
     var body: some View {
@@ -27,9 +28,17 @@ struct ContentView: View {
                 RoundedRectangle(cornerRadius: 10)
                 .stroke(Color.gray.opacity(0.3), lineWidth: 4)
             )
+            
+            // Add ScrollView for posts
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 12) {
+                    ForEach(viewModel.posts) { post in
+                        PostView(post: post)
+                    }
+                }
+            }
+            
             Spacer()
-            
-            
         }
         .padding()
     }
@@ -61,7 +70,10 @@ struct ContentView: View {
             
             // Post Button. User will select this once they are ready to post.
             Button("Post") {
-                // The Back end for the Post Button will go here.
+                if !newComment.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    viewModel.addPost(content: newComment)
+                    newComment = "" // Clear the input field
+                }
             }
             // Formatting for the Post Button.
             .padding(.horizontal, 20)
@@ -77,6 +89,26 @@ struct ContentView: View {
             
         }
 
+    }
+}
+
+// Add a new view for displaying individual posts
+struct PostView: View {
+    let post: Post
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(post.content)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(10)
+            
+            Text(post.timestamp.formatted())
+                .font(.caption)
+                .foregroundColor(.gray)
+        }
+        .padding(.horizontal)
     }
 }
 
