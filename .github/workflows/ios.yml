@@ -18,8 +18,4 @@ jobs:
       run: sudo xcode-select -s /Applications/Xcode_16.1.app
       
     - name: Build and Test
-      run: |
-        xcodebuild test \
-        -scheme COMP-49X-24-25-PhoneArt-intro-project \
-        -destination 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.1' \
-        CODE_SIGNING_REQUIRED=NO
+      run: ./run-tests.sh
