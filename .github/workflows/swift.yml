@@ -1,23 +1,23 @@
-name: Swift
+name: Intro Project Testing
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  build-and-test:
     name: Build and Test
     runs-on: macos-latest
-
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Select Xcode
-      run: sudo xcode-select -s /Applications/Xcode_16.1.app
-      
-    - name: Build
-      run: |
-        xcodebuild build-for-testing -scheme COMP-49X-24-25-PhoneArt-intro-projectTest -destination 'platform=iOS Simulator,name=iPhone 14'
-        
+    - uses: actions/checkout@v4
+    - name: Setup Xcode version
+      run: sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
+    - name: Run tests
+      run: ./run-tests.sh
