@@ -54,6 +54,35 @@ final class COMP_49X_24_25_PhoneArt_intro_projectUITests: XCTestCase {
     }
 
     @MainActor
+    func testCommentView() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Verify Comment button exists
+        let commentButton = app.buttons["Comments"]
+        XCTAssertTrue(commentButton.exists)
+        
+        // Test tapping the Comment button
+        commentButton.tap()
+        
+        // Verify the Comment View is displayed
+        let commentTextField = app.textFields["Add Comment..."]
+        XCTAssertTrue(commentTextField.exists)
+        
+        // Test entering text in the comment field
+        commentTextField.tap()
+        commentTextField.typeText("This is a test comment")
+        XCTAssertEqual(commentTextField.value as? String, "This is a test comment")
+        
+        // Verify Comment button exists in the Comment View
+        let commentSubmitButton = app.buttons["Comment"]
+        XCTAssertTrue(commentSubmitButton.exists)
+        
+        // Test tapping the Comment button
+        commentSubmitButton.tap()
+    }
+
+    @MainActor
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
