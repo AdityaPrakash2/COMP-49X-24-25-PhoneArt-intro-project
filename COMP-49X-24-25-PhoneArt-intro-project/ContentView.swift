@@ -8,6 +8,7 @@
 import SwiftUI
 
 
+
 // This page will be the main page of the application. It will include all of the posts made by users, as well as the ability to create their own post if logged in.
 struct ContentView: View {
    @StateObject private var viewModel = PostViewModel()
@@ -174,6 +175,7 @@ struct CommentView: View {
    let post: Post
    @Environment(\.dismiss) private var dismiss
    @State private var newComment = ""
+   @StateObject private var commentViewModel = CommentViewModel()
   
    var body: some View {
        VStack(alignment: .leading, spacing: 16) {
@@ -181,6 +183,8 @@ struct CommentView: View {
            backButton()
            // The postDisplayView will display the post.
            postDisplayView()
+           // The commentsListView will display the list of comments.
+           commentsListView()
            Spacer()
        }
        .padding()
@@ -249,7 +253,10 @@ struct CommentView: View {
                )
           
            Button("Comment") {
-               // Action to be completed by Emmett.
+               if !newComment.isEmpty {
+                   commentViewModel.addComment(content: newComment)
+                   newComment = ""
+               }
            }
            // Formatting for the Comment Button.
            .bold()
@@ -260,6 +267,29 @@ struct CommentView: View {
            .cornerRadius(15)
        }
        .padding(.top, 8)
+   }
+   
+   // The UI for displaying the list of comments.
+   private func commentsListView() -> some View {
+       ScrollView {
+           LazyVStack(alignment: .leading, spacing: 12) {
+               ForEach(commentViewModel.comments) { comment in
+                   VStack(alignment: .leading, spacing: 4) {
+                       Text(comment.timestamp.formatted())
+                           .font(.caption)
+                           .foregroundColor(.gray)
+                           .frame(maxWidth: .infinity, alignment: .trailing)
+                       Text(comment.content)
+                           .padding()
+                           .frame(maxWidth: .infinity, alignment: .leading)
+                           .background(Color.gray.opacity(0.1))
+                           .cornerRadius(10)
+                   }
+                   .padding(.horizontal, 30)
+                   .padding(.vertical, 8)
+               }
+           }
+       }
    }
 }
 
