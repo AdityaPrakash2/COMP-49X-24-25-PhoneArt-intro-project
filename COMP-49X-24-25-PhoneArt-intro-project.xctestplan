@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "67806679-8037-4A0C-9A5B-AA5C0AA5B9D2",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:COMP-49X-24-25-PhoneArt-intro-project.xcodeproj",
+      "identifier" : "3BEA91BE2CE05CD500B9EEC7",
+      "name" : "COMP-49X-24-25-PhoneArt-intro-project"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:COMP-49X-24-25-PhoneArt-intro-project.xcodeproj",
+        "identifier" : "3BEA91CE2CE05CD600B9EEC7",
+        "name" : "COMP-49X-24-25-PhoneArt-intro-projectTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:COMP-49X-24-25-PhoneArt-intro-project.xcodeproj",
+        "identifier" : "3BEA91D82CE05CD600B9EEC7",
+        "name" : "COMP-49X-24-25-PhoneArt-intro-projectUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
