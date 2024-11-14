@@ -58,6 +58,14 @@ final class COMP_49X_24_25_PhoneArt_intro_projectUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
+        // First create a post to comment on
+        let postTextField = app.textFields["Share your thoughts here..."]
+        postTextField.tap()
+        postTextField.typeText("Test post")
+        
+        let postButton = app.buttons["Post"]
+        postButton.tap()
+        
         // Verify Comment button exists
         let commentButton = app.buttons["Comments"]
         XCTAssertTrue(commentButton.exists)
