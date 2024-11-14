@@ -65,6 +65,7 @@ public class PostViewModel: ObservableObject {
                 self.fetchPosts() // Refresh the posts after deletion
             }
         }
+
     }
     
 }
