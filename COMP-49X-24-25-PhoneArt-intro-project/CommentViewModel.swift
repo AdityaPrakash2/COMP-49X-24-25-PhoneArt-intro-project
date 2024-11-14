@@ -1,22 +1,18 @@
 import Foundation
 import FirebaseFirestore
-
 public struct Comment: Identifiable {
     public let id: UUID
     public let content: String
     public let timestamp: Date
-
     public init(id: UUID = UUID(), content: String, timestamp: Date) {
         self.id = id
         self.content = content
         self.timestamp = timestamp
     }
 }
-
 public class CommentViewModel: ObservableObject {
     @Published public var comments: [Comment] = []
     private let db = Firestore.firestore()
-
     // Fetch comments for a specific post
     public func fetchComments(forPostId postId: String) {
         db.collection("comments").whereField("postId", isEqualTo: postId)
@@ -36,7 +32,6 @@ public class CommentViewModel: ObservableObject {
                 } ?? []
             }
     }
-
     // Function to add a new comment to Firestore
     public func addComment(postId: String, content: String) {
         let commentRef = db.collection("comments").document()
@@ -46,7 +41,6 @@ public class CommentViewModel: ObservableObject {
             "content": content,
             "timestamp": Date()
         ]
-
         commentRef.setData(commentData) { error in
             if let error = error {
                 print("Error adding comment: \(error.localizedDescription)")
