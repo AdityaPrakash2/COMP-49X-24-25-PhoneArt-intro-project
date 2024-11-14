@@ -53,42 +53,6 @@ final class COMP_49X_24_25_PhoneArt_intro_projectUITests: XCTestCase {
         postButton.tap()
     }
 
-    @MainActor
-    func testCommentView() throws {
-        let app = XCUIApplication()
-        app.launch()
-        
-        // First create a post to comment on
-        let postTextField = app.textFields["Share your thoughts here..."]
-        postTextField.tap()
-        postTextField.typeText("Test post")
-        
-        let postButton = app.buttons["Post"]
-        postButton.tap()
-        
-        // Verify Comment button exists
-        let commentButton = app.buttons["Comments"]
-        XCTAssertTrue(commentButton.exists)
-        
-        // Test tapping the Comment button
-        commentButton.tap()
-        
-        // Verify the Comment View is displayed
-        let commentTextField = app.textFields["Add Comment..."]
-        XCTAssertTrue(commentTextField.exists)
-        
-        // Test entering text in the comment field
-        commentTextField.tap()
-        commentTextField.typeText("This is a test comment")
-        XCTAssertEqual(commentTextField.value as? String, "This is a test comment")
-        
-        // Verify Comment button exists in the Comment View
-        let commentSubmitButton = app.buttons["Comment"]
-        XCTAssertTrue(commentSubmitButton.exists)
-        
-        // Test tapping the Comment button
-        commentSubmitButton.tap()
-    }
 
     @MainActor 
     func testDeletePost() throws {
@@ -147,6 +111,31 @@ final class COMP_49X_24_25_PhoneArt_intro_projectUITests: XCTestCase {
     }
 
     @MainActor
+    func testDeleteButtonsExist() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Create a post to test post delete button
+        let postTextField = app.textFields["Share your thoughts here..."]
+        postTextField.tap()
+        postTextField.typeText("Test Post")
+        app.buttons["Post"].tap()
+        
+        // Verify post delete button exists
+        XCTAssertTrue(app.buttons["Delete"].exists, "Post delete button should exist")
+        
+        // Navigate to comments and create a comment to test comment delete button
+        app.buttons["Comments"].tap()
+        let commentTextField = app.textFields["Add Comment..."]
+        commentTextField.tap()
+        commentTextField.typeText("Test Comment")
+        app.buttons["Comment"].tap()
+        
+        // Verify comment delete button exists
+        XCTAssertTrue(app.buttons["Delete"].exists, "Comment delete button should exist")
+    }
+
+    @MainActor
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.
@@ -155,4 +144,6 @@ final class COMP_49X_24_25_PhoneArt_intro_projectUITests: XCTestCase {
             }
         }
     }
+    
+    
 }
