@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B62568C32CE6A1BE001F191E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B62568C22CE6A1BE001F191E /* FirebaseAuth */; };
 		B65B01DA2CE5DD7600ECED3F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B65B01D92CE5DD7600ECED3F /* FirebaseFirestore */; };
 		B65B01DC2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B65B01DB2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65B01DA2CE5DD7600ECED3F /* FirebaseFirestore in Frameworks */,
+				B62568C32CE6A1BE001F191E /* FirebaseAuth in Frameworks */,
 				B65B01DC2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +123,7 @@
 			packageProductDependencies = (
 				B65B01D92CE5DD7600ECED3F /* FirebaseFirestore */,
 				B65B01DB2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community */,
+				B62568C22CE6A1BE001F191E /* FirebaseAuth */,
 			);
 			productName = "COMP-49X-24-25-PhoneArt-intro-project";
 			productReference = 3BEA91BF2CE05CD500B9EEC7 /* COMP-49X-24-25-PhoneArt-intro-project.app */;
@@ -577,6 +580,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B62568C22CE6A1BE001F191E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6F4354B2CE42CEC00F36596 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		B65B01D92CE5DD7600ECED3F /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B6F4354B2CE42CEC00F36596 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
