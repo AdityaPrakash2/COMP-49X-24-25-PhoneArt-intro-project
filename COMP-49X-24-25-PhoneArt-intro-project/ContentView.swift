@@ -36,7 +36,7 @@ struct ContentView: View {
                ScrollView {
                    LazyVStack(alignment: .leading, spacing: 12) {
                        ForEach(viewModel.posts) { post in
-                           PostView(post: post)
+                           PostView(post: post, viewModel: viewModel)
                        }
                    }
                }
@@ -105,6 +105,7 @@ struct ContentView: View {
 // Add a customized view for displaying individual posts
 struct PostView: View {
    let post: Post
+   @ObservedObject var viewModel: PostViewModel
    // Needed to ensure that the Comment View is displayed when the user clicks on the Comment button.
    @State private var showCommentView = false
   
@@ -113,7 +114,11 @@ struct PostView: View {
            // Displaying the timestamp, content, and comment button for each post.
            timestampView()
            contentView()
-           commentButton()
+           HStack {
+               commentButton()
+               Spacer()
+               deleteButton()
+           }
        }
        // Navigation Destination to ensure that the Comment View is displayed when the user clicks on the Comment button.
        .navigationDestination(isPresented: $showCommentView) {
@@ -163,6 +168,25 @@ struct PostView: View {
        .overlay(
            RoundedRectangle(cornerRadius: 15)
                .stroke(Color(red: 0.0, green: 0.0, blue: 0.4), lineWidth: 4)
+       )
+       .padding(.top, 8)
+   }
+
+   // The UI for the Delete button of each post.
+   private func deleteButton() -> some View {
+       Button("Delete") {
+           // To be added by Noah later.
+       }
+       // Formatting for the Delete Button.
+       .padding(.horizontal, 20)
+       .padding(.vertical, 8)
+       .background(Color(red: 0.8, green: 0.0, blue: 0.0))
+       .foregroundColor(.white)
+       .bold()
+       .cornerRadius(15)
+       .overlay(
+           RoundedRectangle(cornerRadius: 15)
+               .stroke(Color(red: 0.6, green: 0.0, blue: 0.0), lineWidth: 4)
        )
        .padding(.top, 8)
    }
@@ -281,11 +305,20 @@ struct CommentView: View {
                            .frame(maxWidth: .infinity, alignment: .trailing)
                        Text(comment.content)
                            .padding()
-                           .frame(maxWidth: .infinity, alignment: .leading)
+                           .frame(maxWidth: .infinity * 0.9, alignment: .leading)
                            .background(Color.gray.opacity(0.1))
                            .cornerRadius(10)
+                       HStack {
+                           Spacer()
+                           Button(action: {
+                               // Delete functionality will be added by Noah later
+                           }) {
+                               Text("Delete")
+                                   .foregroundColor(.red)
+                           }
+                       }
                    }
-                   .padding(.horizontal, 30)
+                   .padding(.horizontal, 25) 
                    .padding(.vertical, 8)
                }
            }
