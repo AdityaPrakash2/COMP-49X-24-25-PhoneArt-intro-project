@@ -90,6 +90,62 @@ final class COMP_49X_24_25_PhoneArt_intro_projectUITests: XCTestCase {
         commentSubmitButton.tap()
     }
 
+    @MainActor 
+    func testDeletePost() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Create a post first
+        let postTextField = app.textFields["Share your thoughts here..."]
+        postTextField.tap()
+        postTextField.typeText("Post to delete")
+        
+        let postButton = app.buttons["Post"]
+        postButton.tap()
+        
+        // Verify Delete button exists
+        let deleteButton = app.buttons["Delete"]
+        XCTAssertTrue(deleteButton.exists)
+        
+        // Test tapping the delete button
+        deleteButton.tap()
+        
+    }
+    
+    @MainActor
+    func testDeleteComment() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        // Create a post first
+        let postTextField = app.textFields["Share your thoughts here..."]
+        postTextField.tap()
+        postTextField.typeText("Post with comment")
+        
+        let postButton = app.buttons["Post"]
+        postButton.tap()
+        
+        // Navigate to comment view
+        let commentButton = app.buttons["Comments"]
+        commentButton.tap()
+        
+        // Add a comment
+        let commentTextField = app.textFields["Add Comment..."]
+        commentTextField.tap()
+        commentTextField.typeText("Comment to delete")
+        
+        let commentSubmitButton = app.buttons["Comment"]
+        commentSubmitButton.tap()
+        
+        // Verify Delete button exists for comment
+        let deleteCommentButton = app.buttons["Delete"]
+        XCTAssertTrue(deleteCommentButton.exists)
+        
+        // Test tapping the delete button
+        deleteCommentButton.tap()
+        
+    }
+
     @MainActor
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
