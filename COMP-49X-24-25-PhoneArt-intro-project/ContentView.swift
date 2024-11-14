@@ -253,3 +253,7 @@ struct CommentView: View {
        }
    }
 }
+
+#Preview {
+    ContentView()
+}

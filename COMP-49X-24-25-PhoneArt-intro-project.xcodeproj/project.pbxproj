@@ -6,11 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		B65B01DA2CE5DD7600ECED3F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B65B01D92CE5DD7600ECED3F /* FirebaseFirestore */; };
-		B65B01DC2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B65B01DB2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		3BEA91D02CE05CD600B9EEC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -57,8 +52,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B65B01DA2CE5DD7600ECED3F /* FirebaseFirestore in Frameworks */,
-				B65B01DC2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,8 +112,6 @@
 			);
 			name = "COMP-49X-24-25-PhoneArt-intro-project";
 			packageProductDependencies = (
-				B65B01D92CE5DD7600ECED3F /* FirebaseFirestore */,
-				B65B01DB2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community */,
 			);
 			productName = "COMP-49X-24-25-PhoneArt-intro-project";
 			productReference = 3BEA91BF2CE05CD500B9EEC7 /* COMP-49X-24-25-PhoneArt-intro-project.app */;
@@ -575,19 +566,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B65B01D92CE5DD7600ECED3F /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B6F4354B2CE42CEC00F36596 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		B65B01DB2CE5DD7600ECED3F /* FirebaseFirestoreCombine-Community */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B6F4354B2CE42CEC00F36596 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreCombine-Community";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BEA91B72CE05CD500B9EEC7 /* Project object */;
 }
