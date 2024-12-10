@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3BE4F39E2CE68B6F00FFAECC /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 3BE4F39D2CE68B6F00FFAECC /* FirebaseCore */; };
+		3BE4F3A02CE68B6F00FFAECC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3BE4F39F2CE68B6F00FFAECC /* FirebaseFirestore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		3BEA91D02CE05CD600B9EEC7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE4F39E2CE68B6F00FFAECC /* FirebaseCore in Frameworks */,
+				3BE4F3A02CE68B6F00FFAECC /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = "COMP-49X-24-25-PhoneArt-intro-project";
 			packageProductDependencies = (
+				3BE4F39D2CE68B6F00FFAECC /* FirebaseCore */,
+				3BE4F39F2CE68B6F00FFAECC /* FirebaseFirestore */,
 			);
 			productName = "COMP-49X-24-25-PhoneArt-intro-project";
 			productReference = 3BEA91BF2CE05CD500B9EEC7 /* COMP-49X-24-25-PhoneArt-intro-project.app */;
@@ -566,6 +575,17 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3BE4F39D2CE68B6F00FFAECC /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseCore;
+		};
+		3BE4F39F2CE68B6F00FFAECC /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3BEA91B72CE05CD500B9EEC7 /* Project object */;
 }
